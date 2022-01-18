@@ -640,7 +640,7 @@
 		},
 		"default_properties": [
 			{
-				"name": "consul.servicenmae",
+				"name": "consul.servicename",
 				"value": "((application.name))",
 				"type": "string"
 			},

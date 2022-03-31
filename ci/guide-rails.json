@@ -458,7 +458,6 @@
 						]
 					}
 				],
-				"gated": true,
 				"tasks": [
 					{
 						"name": "health_check",

@@ -647,6 +647,11 @@
 				"name": "gr.helm.wait.timeout",
 				"value": "5m",
 				"type": "string"
+			},
+			{
+				"name": "gr.sonarscanner.after_build",
+				"value": "true",
+				"type": "boolean"
 			}
 		],
 		"deployment_files": [

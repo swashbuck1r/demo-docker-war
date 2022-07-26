@@ -18,7 +18,7 @@ public class MathIntegrationTest {
 	public void hello() throws MalformedURLException {
 		ResponseEntity<String> response = template.getForEntity("http://localhost:8080/", String.class);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals("Hello World!", response.getBody());
+		assertEquals("Hello CloudBees!", response.getBody());
 	}
 
 	@Test

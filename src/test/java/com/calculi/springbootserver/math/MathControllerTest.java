@@ -26,16 +26,16 @@ public class MathControllerTest {
     public void getHello() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Hello World!")));
+                .andExpect(content().string(equalTo("Hello CloudBees!")));
 	}
-	
+
 	@Test
 	public void getAdd() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/add/3/2").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("5.0")));
 	}
-	
+
 	@Test
 	public void getSub() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/sub/3/2").accept(MediaType.APPLICATION_JSON))
@@ -49,7 +49,7 @@ public class MathControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("6.0")));
 	}
-	
+
 	@Test
 	public void getDiv() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/div/3/2").accept(MediaType.APPLICATION_JSON))
@@ -63,19 +63,19 @@ public class MathControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("\"Infinity\"")));
 	}
-	
+
 	@Test
 	public void getSqrt() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/sqrt/4").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("2.0")));
     }
-	
+
 	@Test
 	public void getCbrt() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/cbrt/27").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("3.0")));
 	}
-	
+
 }

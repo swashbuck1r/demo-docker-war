@@ -12,7 +12,7 @@ class MathController {
 
 	@GetMapping("/")
 	public String hello() {
-		return "Hello CloudBees!";
+		return "Hello CloudBees!!";
 	}
 
 	@GetMapping("/add/{a}/{b}")

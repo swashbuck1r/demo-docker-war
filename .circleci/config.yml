@@ -1,7 +1,7 @@
 # Java Gradle CircleCI 2.1 configuration file
 version: 2.1
 description: |
-    Simplify common tasks for building and testing Java projects using Gradle.
+    Build and test a simple Java project using Gradle.
 display:
     home_url: https://gradle.org/
     source_url: https://github.com/CircleCI-Public/gradle-orb
@@ -11,7 +11,6 @@ jobs:
   say_workflow_starting:
     docker:
       - image: cimg/openjdk:18.0.1
-      # - image: cimg/base:stable
     steps:
       - run: echo "CircleCI Workflow starting"
   say_workflow_ending:
@@ -27,12 +26,11 @@ jobs:
       - checkout
       - run: java --version
   checkout-build-test:
-      docker:
-        - image: cimg/openjdk:18.0.1
-      steps:
-        - checkout
-        - run: java --version
-        - gradle/test
+    docker:
+      - image: cimg/openjdk:18.0.1
+    steps:
+      # - gradle/test
+      - checkout
 workflows:
     # Name of workflow
   run_jobs:
@@ -40,4 +38,5 @@ workflows:
     jobs:
       - say_workflow_starting
       - build
+      - checkout-build-test
       - say_workflow_ending

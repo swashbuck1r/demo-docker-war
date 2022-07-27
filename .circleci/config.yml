@@ -4,45 +4,50 @@ version: 2.1
 orbs:
   gradle: circleci/gradle@3.0.0
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  build:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+workflows:
+  checkout-build-test:
+    jobs:
+      - gradle/test
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+# # Define a job to be invoked later in a workflow.
+# # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+# jobs:
+#   build:
+#     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+#     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/openjdk:8-jdk
 
-    working_directory: ~/repo
+#       # Specify service dependencies here if necessary
+#       # CircleCI maintains a library of pre-built images
+#       # documented at https://circleci.com/docs/2.0/circleci-images/
+#       # - image: circleci/postgres:9.4
 
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-      TERM: dumb
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
+#     working_directory: ~/repo
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+#     environment:
+#       # Customize the JVM maximum heap limit
+#       JVM_OPTS: -Xmx3200m
+#       TERM: dumb
+#     # Add steps to the job
+#     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+#     steps:
+#       - checkout
 
-      - run: gradle dependencies
+#       # Download and cache dependencies
+#       - restore_cache:
+#           keys:
+#             - v1-dependencies-{{ checksum "build.gradle" }}
+#             # fallback to using the latest cache if no exact match is found
+#             - v1-dependencies-
 
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+#       - run: gradle dependencies
 
-      # run tests!
-      - run: gradle test
+#       - save_cache:
+#           paths:
+#             - ~/.gradle
+#           key: v1-dependencies-{{ checksum "build.gradle" }}
+
+#       # run tests!
+#       - run: gradle test

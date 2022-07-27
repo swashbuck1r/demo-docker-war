@@ -13,10 +13,10 @@ jobs:
       - image: cimg/openjdk:11.0.13
     steps:
       - run: echo "CircleCI Workflow starting"
+      - run: java --version
   say_workflow_ending:
     docker:
       - image: cimg/openjdk:11.0.13
-      # - image: cimg/base:stable
     steps:
       - run: echo "CircleCI Workflow ending."
   checkout-build-test:

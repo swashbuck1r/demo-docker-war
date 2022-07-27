@@ -10,7 +10,8 @@ jobs:
     # Job one with a unique name
   say_hello:
     docker:
-      - image: circleci/openjdk:8-jdk
+      # - image: circleci/openjdk:8-jdk
+      - image: cimg/openjdk:18.0.1
       # - image: cimg/base:stable
     steps:
       - run: echo "Say hello to YAML!"

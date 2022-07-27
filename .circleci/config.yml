@@ -37,6 +37,6 @@ workflows:
     # List of jobs that will run
     jobs:
       - say_workflow_starting
-      - checkout-build-test
+      - checkout-build-test 
       # - build
       - say_workflow_ending

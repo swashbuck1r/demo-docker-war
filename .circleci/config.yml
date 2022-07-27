@@ -8,14 +8,18 @@ display:
 orbs:
   gradle: circleci/gradle@3.0.0
 jobs:
-    # Job one with a unique name
-  say_hello:
+  say_workflow_starting:
     docker:
-      # - image: circleci/openjdk:8-jdk
       - image: cimg/openjdk:18.0.1
       # - image: cimg/base:stable
     steps:
-      - run: echo "Say hello to YAML!"
+      - run: echo "CircleCI Workflow starting"
+  say_workflow_ending:
+    docker:
+      - image: cimg/openjdk:18.0.1
+      # - image: cimg/base:stable
+    steps:
+      - run: echo "CircleCI Workflow ending."
   build:
     docker:
       - image: cimg/openjdk:18.0.1
@@ -27,9 +31,10 @@ workflows:
   run_jobs:
     # List of jobs that will run
     jobs:
-      - say_hello
+      - say_workflow_running
       - build
       # - say_goodbye
+      - say_workflow_ending
     # checkout-build-test:
     #     jobs:
     #         - gradle/test

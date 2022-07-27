@@ -14,28 +14,28 @@ jobs:
     steps:
       - run: echo "Say hello to YAML!"
   # Job two with a unique name
-  say_goodbye:
-    docker:
-     - image: cimg/base:2022.05
-    steps:
-      - run: echo "Say goodbye to YAML!"
-  # Job two with a unique name
-#   build:
-#     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-#     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+#   say_goodbye:
 #     docker:
-#       # specify the version you desire here
-#       - image: circleci/openjdk:8-jdk
-#      steps:
-#         - run: echo "Say hello to YAML!"
+#      - image: cimg/base:2022.05
+#     steps:
+#       - run: echo "Say goodbye to YAML!"
+#   # Job two with a unique name
+# #   build:
+# #     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+# #     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+# #     docker:
+# #       # specify the version you desire here
+# #       - image: circleci/openjdk:8-jdk
+# #      steps:
+# #         - run: echo "Say hello to YAML!"
 
-workflows:
-    # Name of workflow
-  hello_and_goodbye:
-    # List of jobs that will run
-    jobs:
-      - say_hello
-      - say_goodbye
+# workflows:
+#     # Name of workflow
+#   hello_and_goodbye:
+#     # List of jobs that will run
+#     jobs:
+#       - say_hello
+#       - say_goodbye
     # checkout-build-test:
     #     jobs:
     #         - gradle/test

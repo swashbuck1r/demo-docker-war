@@ -38,5 +38,5 @@ workflows:
     jobs:
       - say_workflow_starting
       - checkout-build-test 
-      # - build
+      - build
       - say_workflow_ending

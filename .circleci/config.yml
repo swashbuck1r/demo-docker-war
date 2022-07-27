@@ -26,15 +26,18 @@ jobs:
     steps:
       - checkout
       - run: java --version
+  checkout-build-test:
+      docker:
+        - image: cimg/openjdk:18.0.1
+      steps:
+        - checkout
+        - run: java --version
+        - gradle/test
 workflows:
     # Name of workflow
   run_jobs:
     # List of jobs that will run
     jobs:
-      - say_workflow_running
+      - say_workflow_starting
       - build
-      # - say_goodbye
       - say_workflow_ending
-    # checkout-build-test:
-    #     jobs:
-    #         - gradle/test

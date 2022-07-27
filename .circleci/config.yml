@@ -14,6 +14,7 @@ jobs:
     steps:
       - run: echo "CircleCI Workflow starting"
       - run: java --version
+      - run: gradle -V
   say_workflow_ending:
     docker:
       - image: cimg/openjdk:11.0.13
@@ -24,20 +25,14 @@ jobs:
       - image: cimg/openjdk:11.0.13
     steps:
       - checkout
-      - run: gradle test
-      # - run: gradle -V 
-  build:
-    docker:
-      - image: cimg/openjdk:11.0.13
-    steps:
-      - checkout
       - run: gradle build
+      - run: gradle test
+      # - run: gradle test 
 workflows:
     # Build and test a simple Java project using Gradle.
   run_jobs:
     # List of jobs that will run
     jobs:
       - say_workflow_starting
-      # - checkout-build-test  
-      - build
+      - checkout-build-test  
       - say_workflow_ending

@@ -24,10 +24,11 @@ jobs:
 
 workflows:
     # Name of workflow
-  hello_and_goodbye:
+  run_jobs:
     # List of jobs that will run
     jobs:
       - say_hello
+      - build
       # - say_goodbye
     # checkout-build-test:
     #     jobs:

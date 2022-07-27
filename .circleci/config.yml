@@ -10,33 +10,33 @@ orbs:
 jobs:
   say_workflow_starting:
     docker:
-      - image: cimg/openjdk:18.0.1
+      - image: cimg/openjdk:11.0.13
     steps:
       - run: echo "CircleCI Workflow starting"
   say_workflow_ending:
     docker:
-      - image: cimg/openjdk:18.0.1
+      - image: cimg/openjdk:11.0.13
       # - image: cimg/base:stable
     steps:
       - run: echo "CircleCI Workflow ending."
+  checkout-build-test:
+    docker:
+      - image: cimg/openjdk:11.0.13
+    steps:
+      - checkout
+      - run: gradle test
   build:
     docker:
-      - image: cimg/openjdk:18.0.1
+      - image: cimg/openjdk:11.0.13
     steps:
       - checkout
       - run: java --version
-  checkout-build-test:
-    docker:
-      - image: cimg/openjdk:18.0.1
-    steps:
-      # - gradle/test
-      - checkout
 workflows:
-    # Name of workflow
+    # Build and test a simple Java project using Gradle.
   run_jobs:
     # List of jobs that will run
     jobs:
       - say_workflow_starting
-      - build
       - checkout-build-test
+      # - build
       - say_workflow_ending

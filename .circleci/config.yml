@@ -24,6 +24,7 @@ jobs:
       - image: cimg/openjdk:11.0.13
     steps:
       - checkout
+      - run: java --version
       - run: gradle test
       # - run: gradle -V 
   build:
@@ -38,6 +39,6 @@ workflows:
     # List of jobs that will run
     jobs:
       # - say_workflow_starting
-      # - checkout-build-test  
-      - build
+      - checkout-build-test  
+      # - build
       # - say_workflow_ending

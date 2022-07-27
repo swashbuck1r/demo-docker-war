@@ -19,21 +19,20 @@ jobs:
       # - image: cimg/base:stable
     steps:
       - run: echo "CircleCI Workflow ending."
-  build:
-    docker:
-      - image: cimg/openjdk:11.0.13
-    steps:
-      - checkout
-      - run: java --version
   checkout-build-test:
     docker:
       - image: cimg/openjdk:11.0.13
     steps:
       - checkout
       - run: gradle test
-      # - checkout
+  build:
+    docker:
+      - image: cimg/openjdk:11.0.13
+    steps:
+      - checkout
+      - run: java --version
 workflows:
-    # Name of workflow
+    # Build and test a simple Java project using Gradle.
   run_jobs:
     # List of jobs that will run
     jobs:

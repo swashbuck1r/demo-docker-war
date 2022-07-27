@@ -1,12 +1,41 @@
-# Java Gradle CircleCI 2.0 configuration file
+# Java Gradle CircleCI 2.1 configuration file
 version: 2.1
-description: |
-    Simplify common tasks for building and testing Java projects using Gradle.
+# description: |
+#     Simplify common tasks for building and testing Java projects using Gradle.
 
-orbs:
-  gradle: circleci/gradle@3.0.0
+# orbs:
+#   gradle: circleci/gradle@3.0.0
+
+jobs:
+    # Job one with a unique name
+  say_hello:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - run: echo "Say hello to YAML!"
+  # Job two with a unique name
+  say_goodbye:
+    docker:
+     - image: cimg/base:2022.05
+    steps:
+      - run: echo "Say goodbye to YAML!"
+  # Job two with a unique name
+#   build:
+#     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+#     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/openjdk:8-jdk
+#      steps:
+#         - run: echo "Say hello to YAML!"
 
 workflows:
-    checkout-build-test:
-        jobs:
-            - gradle/test
+    # Name of workflow
+  hello_and_goodbye:
+    # List of jobs that will run
+    jobs:
+      - say_hello
+      - say_goodbye
+    # checkout-build-test:
+    #     jobs:
+    #         - gradle/test

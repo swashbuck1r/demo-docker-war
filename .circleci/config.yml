@@ -1,10 +1,12 @@
 # Java Gradle CircleCI 2.0 configuration file
 version: 2.1
+description: |
+    Simplify common tasks for building and testing Java projects using Gradle.
 
 orbs:
   gradle: circleci/gradle@3.0.0
 
 workflows:
-  checkout-build-test:
-    jobs:
-      - gradle/test
+    checkout-build-test:
+        jobs:
+            - gradle/test

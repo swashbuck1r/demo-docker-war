@@ -1,5 +1,4 @@
-# Guide-Rails Demo using Java SpringBoot
-Learn how to get started with Guide-Rails full CI/CD pipelines using this sample Java application. 
+# Sample App using Java SpringBoot
 Check out the [Tutuorial](https://guide-rails.calculi.io/help/tutorials/java/java.html)
 
 =======

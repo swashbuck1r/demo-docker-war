@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: echo "CircleCI Workflow starting"
       - run: java --version
-      - run: gradle -V
+      - run: gradle -v
   say_workflow_ending:
     docker:
       - image: cimg/openjdk:11.0.13

@@ -24,7 +24,8 @@ jobs:
       - image: cimg/openjdk:11.0.13
     steps:
       - checkout
-      - run: gradle test
+      # - run: gradle test
+      # - run: gradle -V 
   build:
     docker:
       - image: cimg/openjdk:11.0.13
@@ -36,7 +37,7 @@ workflows:
   run_jobs:
     # List of jobs that will run
     jobs:
-      - say_workflow_starting
-      - checkout-build-test 
-      # - build
-      - say_workflow_ending
+      # - say_workflow_starting
+      # - checkout-build-test 
+      - build
+      # - say_workflow_ending

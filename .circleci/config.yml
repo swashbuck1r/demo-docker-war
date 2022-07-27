@@ -3,8 +3,8 @@ version: 2.1
 # description: |
 #     Simplify common tasks for building and testing Java projects using Gradle.
 
-orbs:
-  gradle: circleci/gradle@3.0.0
+# orbs:
+#   gradle: circleci/gradle@3.0.0
 
 jobs:
     # Job one with a unique name

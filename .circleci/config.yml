@@ -1,5 +1,10 @@
 # Java Gradle CircleCI 2.1 configuration file
 version: 2.1
+description: |
+    Simplify common tasks for building and testing Java projects using Gradle.
+display:
+    home_url: https://gradle.org/
+    source_url: https://github.com/CircleCI-Public/gradle-orb
 orbs:
   gradle: circleci/gradle@3.0.0
 jobs:

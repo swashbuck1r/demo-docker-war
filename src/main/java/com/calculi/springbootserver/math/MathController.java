@@ -45,4 +45,9 @@ class MathController {
 		return Math.cbrt(a);
 	}
 
+	@GetMapping("/abs/{a}")
+	Double abs(@PathVariable Double a) {
+		return Math.abs(a);
+	}
+
 }

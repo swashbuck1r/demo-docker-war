@@ -78,4 +78,11 @@ public class MathControllerTest {
                 .andExpect(content().string(equalTo("3.0")));
 	}
 
+        @Test
+	public void getAbs() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/abs/-99.2").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("99.2")));
+	}
+
 }

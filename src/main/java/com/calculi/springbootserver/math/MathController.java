@@ -40,9 +40,9 @@ class MathController {
 		return Math.sqrt(a);
 	}
 
-	@GetMapping("/cbrt/{a}")
-	Double cbrt(@PathVariable Double a) {
-		return Math.cbrt(a);
+	@GetMapping("/cbrt/{aa}")
+	Double cbrt(@PathVariable Double aa) {
+		return Math.cbrt(aa);
 	}
 
 	@GetMapping("/abs/{a}")

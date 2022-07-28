@@ -69,4 +69,11 @@ public class MathIntegrationTest {
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		assertEquals("3.0", response.getBody());
 	}
+
+	@Test
+	public void abs() throws MalformedURLException {
+		ResponseEntity<String> response = template.getForEntity("http://localhost:8080/abs/27.6", String.class);
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals("27.6", response.getBody());
+	}
 }

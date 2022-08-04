@@ -62,13 +62,6 @@ spec:
         }
       }
     }
-    stage('Test') {
-      steps {
-        container('gradle') {
-          sh 'gradle integrationTest'
-        }
-      }
-    }
     stage('Build Docker image with Kaniko') {
       steps {
         container(name: 'kaniko', shell: '/busybox/sh') {

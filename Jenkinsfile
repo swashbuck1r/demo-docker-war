@@ -11,6 +11,11 @@ metadata:
     some-label: some-label-value
 spec:
   containers:
+  - name: gradle
+    image: gradle:latest
+    command:
+    - cat
+    tty: true
   - name: maven
     image: maven:3.6.1-jdk-8-slim
     command:
@@ -52,8 +57,15 @@ spec:
   stages {
     stage('Build') {
       steps {
-        container('maven') {
-          sh 'mvn clean package'
+        container('gradle') {
+          sh 'gradle build'
+        }
+      }
+    }
+    stage('Test') {
+      steps {
+        container('gradle') {
+          sh 'gradle integrationTest'
         }
       }
     }
@@ -63,7 +75,7 @@ spec:
           withEnv(['PATH+EXTRA=/busybox']) {
             sh '''#!/busybox/sh
             pwd
-            /kaniko/executor --context "`pwd`" --destination jpbriend/${IMAGE}:${VERSION}
+            /kaniko/executor --context "`pwd`" --destination swashbuck1r/${IMAGE}:${VERSION}
             '''
            }
         }

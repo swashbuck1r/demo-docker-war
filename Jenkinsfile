@@ -70,7 +70,6 @@ spec:
         container(name: 'kaniko', shell: '/busybox/sh') {
           withEnv(['PATH+EXTRA=/busybox']) {
             sh '''#!/busybox/sh
-            echo '{"credsStore":"ecr-login"}' > /kaniko/.docker/config.json
             pwd
             /kaniko/executor --context "`pwd`" --destination 189768267137.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}:${VERSION}
             '''

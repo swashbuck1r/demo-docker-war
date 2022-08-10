@@ -52,6 +52,9 @@ spec:
   environment {
     IMAGE = "demo-javarest-java-spring"
     VERSION = "0.0.1"
+    AWS_ROLE_ARN = "arn:aws:iam::189768267137:role/JenkinsRasgulla"
+    AWS_WEB_IDENTITY_TOKEN_FILE = credentials('rasgulla-aws-oidc')
+    AWS_SDK_LOAD_CONFIG=true
   }
 
   stages {
@@ -67,8 +70,9 @@ spec:
         container(name: 'kaniko', shell: '/busybox/sh') {
           withEnv(['PATH+EXTRA=/busybox']) {
             sh '''#!/busybox/sh
+            echo '{"credsStore":"ecr-login"}' > /kaniko/.docker/config.json
             pwd
-            /kaniko/executor --context "`pwd`" --destination swashbuck1r/${IMAGE}:${VERSION}
+            /kaniko/executor --context "`pwd`" --destination 189768267137.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}:${VERSION}
             '''
            }
         }

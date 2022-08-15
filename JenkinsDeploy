@@ -39,7 +39,7 @@ spec:
     "containerDefinitions": [
         {
             "name": "demo-war-app",
-            "image": "",
+            "image": "189768267137.dkr.ecr.us-east-1.amazonaws.com/demo-javarest-java-spring:0.0.1",
             "portMappings": [
                 {
                     "containerPort": 8080,

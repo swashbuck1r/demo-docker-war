@@ -70,13 +70,13 @@ spec:
             container('awscli') { 
                 script {
                     sh("yum install -y less groff jq")
-                    def ECR_VERSION = sh(script:"/usr/local/bin/aws ecr describe-images --region ${AWS_REGION} --repository-name ${AWS_ECR_IMAGE} --output text --query 'sort_by(imageDetails,& imagePushedAt)[*].imageTags[*]'| sed 's/\t/\n/g' | tail -1", returnStdout: true)
+                    def ECR_VERSION = sh(script:"/usr/local/bin/aws ecr describe-images --region ${AWS_REGION} --repository-name ${AWS_ECR_IMAGE} --output text --query 'sort_by(imageDetails,& imagePushedAt)[*].imageTags[*]'| sed \"s/\t/\n/g\" | tail -1", returnStdout: true)
                     sh("cat > task.json <<- EOM\n${CONFIG_DATA}\nEOM")
                     sh("jq '.containerDefinitions[0].image = \"${AWS_ECR_URL}:${ECR_VERSION}\"' task.json > task2.json")
                     sh("mv task2.json task.json")
 
                     sh("/usr/local/bin/aws ecs register-task-definition --execution-role-arn ${AWS_ROLE_ECS_ARN} --cli-input-json file://task.json")
-                    def taskRevision = sh(script: "/usr/local/bin/aws ecs describe-task-definition --task-definition sample-app | egrep \"revision\" | awk '{print \$2}' | sed 's/,//g'", returnStdout: true)
+                    def taskRevision = sh(script: "/usr/local/bin/aws ecs describe-task-definition --task-definition ${AWS_ECS_TASK_DEFINITION} | egrep \"revision\" | awk '{print \$2}' | sed 's/,//g'", returnStdout: true)
                     
                     sh("/usr/local/bin/aws ecs update-service --cluster ${AWS_ECS_CLUSTER} --service ${AWS_ECS_SERVICE} --task-definition ${AWS_ECS_TASK_DEFINITION}:${taskRevision}")
                 }

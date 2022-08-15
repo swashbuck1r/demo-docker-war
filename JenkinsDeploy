@@ -30,7 +30,7 @@ spec:
       AWS_ECS_COMPATIBILITY = 'FARGATE'
       AWS_ECS_NETWORK_MODE = 'awsvpc'
       AWS_ECS_MEMORY = '512'
-      AWS_ECS_CLUSTER = "dbuckman-cluster"
+      AWS_ECS_CLUSTER = "demo-cluster"
       AWS_ECR_URL = "189768267137.dkr.ecr.us-east-1.amazonaws.com/demo-javarest-java-spring"
       AWS_ECR_IMAGE = "demo-javarest-java-spring"
       CONFIG_DATA = """{

@@ -1,7 +1,7 @@
 # Sample App using Java SpringBoot
 Check out the [Tutuorial](https://guide-rails.calculi.io/help/tutorials/java/java.html)
 
-# readme kick the build
+# readme kick the build 2
 
 =======
 ## SpringBoot Server
